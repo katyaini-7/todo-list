@@ -11,12 +11,31 @@ addBtn.addEventListener("click", function () {
         return;
     }
 
+    // Create a new list item
     const li = document.createElement("li");
 
-    li.textContent = taskText;
+    // Create task text
+    const span = document.createElement("span");
+    span.textContent = taskText;
+
+    // Create delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+
+    // Mark task as completed
+    span.addEventListener("click", function () {
+        span.classList.toggle("completed");
+    });
+
+    // Delete task
+    deleteBtn.addEventListener("click", function () {
+        li.remove();
+    });
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
 
     taskInput.value = "";
 });
-
